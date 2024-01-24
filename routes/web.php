@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VehiculoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/vehiculo/create', [VehiculoController::class, 'create'])->name('vehiculo.create');
+Route::get('/vehiculo', [VehiculoController::class, 'index'])->name('vehiculo.index');
+
 
 require __DIR__.'/auth.php';
