@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,14 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/vehiculo/create', [VehiculoController::class, 'create'])->name('vehiculo.create');
 Route::get('/vehiculo', [VehiculoController::class, 'index'])->name('vehiculo.index');
+Route::post('/vehiculo', [VehiculoController::class, 'store'])->name('vehiculo.store');
+Route::get('/vehiculo/{vehiculo}/edit', [VehiculoController::class, 'edit'])->name('vehiculo.edit');
+Route::put('/vehiculo/{vehiculo}/update', [VehiculoController::class, 'update'])->name('vehiculo.update');
 
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
 
 require __DIR__.'/auth.php';

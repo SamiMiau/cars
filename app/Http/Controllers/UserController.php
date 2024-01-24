@@ -3,32 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vehiculo;
+use App\Models\User;
 
-class VehiculoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vehiculos = Vehiculo::all();
-        return view('vehiculo.index', ['vehiculos'=> $vehiculos]);
+        $users = User::all();
+        return view('user.index', ['users'=> $users]);
     }
 
     public function create()
     {
-        return view('vehiculo.create');
+        return view('user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-        $newUser = Vehiculo::create($request->all());
-        return redirect()->route('vehiculo.index')
+        $newUser = User::create($request->all());
+        return redirect()->route('user.index')
             ->with('success','Post created successfully.'); 
+            
     }
 
     /**
@@ -42,15 +44,15 @@ class VehiculoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function edit(Vehiculo $vehiculo)
+    public function edit(User $user)
     {
-        return view('vehiculo.edit', ['vehiculo'=>$vehiculo]);
+        return view('user.edit', ['user'=>$user]);
     }
 
-    public function update(Vehiculo $vehiculo, Request $request)
+    public function update(User $user, Request $request)
     {
-        $vehiculo->update($request->all());
-        return redirect()->route('vehiculo.index')
+        $user->update($request->all());
+        return redirect()->route('user.index')
             ->with('success','Updated successfully.'); 
     }
 
