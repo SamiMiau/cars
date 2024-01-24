@@ -23,7 +23,7 @@
     <select class="form-select form-select-sm" id="user_id" name="user_id" aria-label="user_id">
       <option selected>Seleccionar</option>
       @foreach($users as $user)
-      <option value="{{$user->id}}">{{$user->name}}</option>
+      <option value="{{$user->id}}">{{$user->name}} {{$user->apellidos}}</option>
       @endforeach
     </select>
     </div>
