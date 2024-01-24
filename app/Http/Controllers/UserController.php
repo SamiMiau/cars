@@ -16,6 +16,12 @@ class UserController extends Controller
         return view('user.index', ['users'=> $users]);
     }
 
+    public function vehiculos(User $user)
+    {   
+        $vehiculos = $user->vehiculos;
+        return view('vehiculo.index', ['vehiculos'=> $vehiculos]);
+    }
+
     public function create()
     {
         return view('user.create');

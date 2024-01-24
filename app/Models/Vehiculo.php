@@ -16,4 +16,7 @@ class Vehiculo extends Model
         'precio',
         'user_id'
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

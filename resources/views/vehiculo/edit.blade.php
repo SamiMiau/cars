@@ -22,9 +22,9 @@
     <label for="user_id" class="form-label">Dueño</label>
     <select class="form-select form-select-sm" id="user_id" name="user_id" aria-label="user_id" value="{{$vehiculo->user_id}}">
       <option selected>Seleccionar</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      @foreach($users as $user)
+      <option value="{{$user->id}}">{{$user->name}}</option>
+      @endforeach
     </select>
     </div>
 

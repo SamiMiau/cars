@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehiculo;
+use App\Models\User;
+use App\Models\Historico;
 
 class VehiculoController extends Controller
 {
@@ -16,9 +18,11 @@ class VehiculoController extends Controller
         return view('vehiculo.index', ['vehiculos'=> $vehiculos]);
     }
 
+
     public function create()
     {
-        return view('vehiculo.create');
+        $users = User::all();
+        return view('vehiculo.create', ['users'=>$users]);
     }
 
     /**
@@ -44,11 +48,19 @@ class VehiculoController extends Controller
      */
     public function edit(Vehiculo $vehiculo)
     {
-        return view('vehiculo.edit', ['vehiculo'=>$vehiculo]);
+        $users = User::all();
+        return view('vehiculo.edit', ['vehiculo'=>$vehiculo,'users'=>$users]);
     }
 
     public function update(Vehiculo $vehiculo, Request $request)
     {
+        if($vehiculo->user_id != $request->user_id){
+            $newHistorico = Historico::create([
+                'vehiculo_id' => $vehiculo->id,
+                'old_user_id' => $vehiculo->user_id,
+                'new_user_id' => $request->user_id,
+            ]);
+        }
         $vehiculo->update($request->all());
         return redirect()->route('vehiculo.index')
             ->with('success','Updated successfully.'); 

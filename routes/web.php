@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoricoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,8 @@ Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
 Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/{user}/vehiculos', [UserController::class, 'vehiculos'])->name('user.vehiculos');
+
+Route::get('/historico', [HistoricoController::class, 'index'])->name('historico.index');
 
 require __DIR__.'/auth.php';

@@ -22,7 +22,7 @@
         <td>{{$vehiculo->modelo}}</td>
         <td>{{$vehiculo->year}}</td>
         <td>{{$vehiculo->precio}}</td>
-        <td>{{$vehiculo->user_id}}</td>
+        <td>{{$vehiculo->user->name}} {{$vehiculo->user->apellidos}}</td>
         <td>
             <a class="btn btn-primary" href="{{route('vehiculo.edit',['vehiculo'=>$vehiculo])}}" role="button">Editar</a>
             <a class="btn btn-primary" href="#" role="button">Ver dueño</a>

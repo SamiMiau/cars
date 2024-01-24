@@ -21,7 +21,7 @@
         <td>{{$user->email}}</td>
         <td>
             <a class="btn btn-primary" href="{{route('user.edit',['user'=>$user])}}" role="button">Editar</a>
-            <a class="btn btn-primary" href="#" role="button">Ver autos</a>
+            <a class="btn btn-primary" href="{{route('user.vehiculos',['user'=>$user])}}" role="button">Ver autos</a>
             <a class="btn btn-primary" href="#" role="button">Eliminar</a>
         </td>
         </tr>
